@@ -6,7 +6,10 @@
 	}
 
 	require_once( '../inc/config.php' );
+	require_once( ABSPATH . 'head.php' );
 	require_once( ABSPATH . 'header.php' );
+	require_once( ABSPATH . 'footer.php' );
+	global $headString;
 	global $headerString;
 	global $footerString;
 	
@@ -25,7 +28,7 @@
 	
 	foreach( $pages as $page ) {
 		if( $page->slug !== 'gitfeed' ) {
-			$markup = $headerString . '<body class="page-template-default">';
+			$markup = $headString . '<body class="page-template-default">' . $headerString;
 			$markup .= '<main><h1>' . $page->title->rendered . '</h1>';
 			$markup .= $page->content->rendered . '</main>' . $footerString;	
 			

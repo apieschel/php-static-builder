@@ -13,7 +13,26 @@
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 
-<body class="home page-template-page-home"><div class="circle">
+<body class="home page-template-page-home">
+<header>
+	<ul>
+		<li><a href="/">Sites</a></li>
+		<li>
+			<a href="#">Projects</a>
+			<ul>
+				<li><a class="dropdown-item" href="/javascript-calculator">Samsung Galaxy S6 Calculator</a></li>
+				<li><a class="dropdown-item" href="/twitch-api">Twitch API</a></li>
+				<li><a class="dropdown-item" href="/tic-tac-toe">Tic Tac Toe</a></li>
+				<li><a class="dropdown-item" href="/simon">Simon</a></li>
+				<li><a class="dropdown-item" href="/pomodoro">Pomodoro</a></li>
+				<li><a class="dropdown-item" href="/gitfeed">Gitfeed</a></li>
+			</ul>
+		</li>	
+		<li><a href="/about">About</a></li>							
+	</ul>
+</header>
+
+<div class="circle">
 			<i class="fa fa-cog" aria-hidden="true"></i>
 		</div>
 
@@ -267,8 +286,6 @@
 		<script src="assets/lightbox/dist/js/lightbox.min.js" defer></script>
 
 		<script>
-			var $buoop = {c:2};function $buo_f(){var e = document.createElement("script");e.src = "//browser-update.org/update.min.js";document.body.appendChild(e);};try {document.addEventListener("DOMContentLoaded", $buo_f,false)}catch(e){window.attachEvent("onload", $buo_f)}
-		
 			$(window).scroll(function() {
 				if ($(this).scrollTop() > 700) {
 					$(".frankie").addClass("animated fadeInRight");

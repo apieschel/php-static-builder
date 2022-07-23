@@ -7,14 +7,14 @@
 
 	require_once( 'inc/config.php' );
 	require_once( 'checkCache/index.php' );
+	require_once( 'head.php' );
 	require_once( 'header.php' );
-	require_once( 'footer.php' );
 
 	$pageTitle = '';
 	$data = json_decode( file_get_contents( ABSPATH . '/data.json' ) );
     $page;
-    global $headerString;
-	global $footerString;
+    global $headString;
+	global $headerString;
 
 	if( $data ) {
 		$expired = $data->timestamp <= strtotime( '-1 minute', time() );
@@ -99,8 +99,12 @@
 	
 	$level = '<body class="home page-template-page-home">';
 	
-	$markup = $headerString	. $level . $markup . $footerString;
+	echo $markup;
+
+	require_once( 'footer.php' );
+	global $footerString;
+	
+	$markup = $headString . $level . $headerString . $markup . $footerString;
 	
 	file_put_contents( ABSPATH . 'web/index.html', $markup );
-	echo $markup;
 ?>
