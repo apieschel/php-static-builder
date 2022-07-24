@@ -1424,7 +1424,7 @@ input:focus {
 	margin-bottom: 3%;
 }
 
-.page-template-page-tic-tac-toe .description {
+.page-template-page-tic-tac-toe p {
 	text-align: left;
 }
 
@@ -1472,6 +1472,7 @@ input:focus {
 }
 
 #playX {
+	text-align: center;
 	margin-bottom: 2%;
 }
 
