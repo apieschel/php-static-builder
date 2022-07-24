@@ -2,3 +2,5 @@ data.json
 inc/
 .htaccess
 .DS_Store
+robots.txt
+sitemap.xml
