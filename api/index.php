@@ -1,72 +1,109 @@
-<?php 
+<?php	
+	require_once( '../inc/config.php' );
+	require_once( 'head.php' );
+	require_once( 'header.php' );
+
 	if( DEBUG && DEBUG_DISPLAY ) {
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
+		ini_set( 'display_errors', 1 );
+		ini_set( 'display_startup_errors', 1 );
+		error_reporting( E_ALL );
 	}
 
-	require_once( '../inc/config.php' );
-	require_once( ABSPATH . 'head.php' );
-	require_once( ABSPATH . 'header.php' );
-	require_once( ABSPATH . 'footer.php' );
-	global $headString;
+	$pageTitle = '';
+	$data = json_decode( file_get_contents( ABSPATH . 'api/data.json' ) );
+    $page;
+    global $headString;
 	global $headerString;
+
+	if( $data ) {
+		$expired = $data->timestamp <= strtotime( '-1 minute', time() );
+
+		if( $expired ) {
+			$curl = curl_init();
+			
+			curl_setopt_array( $curl, [
+				CURLOPT_RETURNTRANSFER => 1,
+				CURLOPT_URL => API_URL,
+			] );
+
+			$result = curl_exec( $curl );
+			$resultStatus = curl_getinfo( $curl, CURLINFO_HTTP_CODE );
+			
+			curl_close( $curl );
+			
+			if ( $resultStatus == 200 ) {
+				$page = json_decode( $result );
+				$pageArray = ( array ) $page;
+				$pageArray['timestamp'] = time();
+				$data = $pageArray;
+
+				file_put_contents( ABSPATH . 'api/data.json', json_encode( $data ) );
+			} else {
+				$page = $data;
+			}
+		} else {
+			$page = $data;
+		}
+	} else {
+		$curl = curl_init();
+				
+		curl_setopt_array( $curl, [
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_URL => API_URL,
+		] );
+
+		$result = curl_exec( $curl );
+
+		curl_close( $curl );
+		
+		$page = json_decode( $result );
+
+		$page = $page;
+		$pageArray = ( array ) $page;
+		$pageArray['timestamp'] = time();
+		file_put_contents( ABSPATH . 'api/data.json', json_encode( $pageArray ) );
+	}
+
+	$markup = 
+		'<div class="circle">
+			<i class="fa fa-cog" aria-hidden="true"></i>
+		</div>
+
+		<h1>Golden Triangle Software: Site Portfolio</h1>
+		<hr>';
+
+	$pageArray = ( array ) $page;
+	if( gettype( end( $pageArray ) ) !== 'object' ) {
+		array_pop( $pageArray );
+	}
+	
+	foreach( $pageArray as $project ) {
+		$markup .= 
+			'<section id="projects">
+				<h2>' . $project->title->rendered . '</h2>
+
+				<div class="project-container">
+					<a href="' . $project->custom_fields->{'Project URL'}[0] . '" target="_blank">
+						<img width="890" height="938" src="' . $project->_embedded->{'wp:featuredmedia'}[0]->media_details->sizes->full->source_url . '">
+					</a>
+					
+					<div class="project-tile">
+						' . $project->content->rendered . '
+					</div>
+				</div>
+
+				<hr>
+			</section>';
+	}
+	
+	$level = '<body class="home page-template-page-home">';
+	
+	echo $markup;
+
+	require_once( 'footer.php' );
 	global $footerString;
 	
-	$curl = curl_init();
-				
-	curl_setopt_array( $curl, [
-		CURLOPT_RETURNTRANSFER => 1,
-		CURLOPT_URL => API_URL_PAGES,
-	] );
-
-	$result = curl_exec( $curl );
-
-	curl_close( $curl );
-	
-	$pages = ( array ) json_decode( $result );
-	
-	foreach( $pages as $page ) {
-		if( $page->slug !== 'gitfeed' && $page->slug !== 'twitch-api' ) {
-			$markup = $headString;
-
-			if( $page->slug === 'pomodoro' ) {
-				$markup .= '<body class="page-template-page-pomodoro">';
-			} else if( $page->slug === 'simon' ) {
-				$markup .= '<body class="page-template-page-simon">';
-			} else if( $page->slug === 'tic-tac-toe' ) {
-				$markup .= '<body class="page-template-page-tic-tac-toe">';
-			}
-			else {
-				$markup .= '<body class="page-template-default">';
-			}
-
-			$markup .= $headerString;
-			$markup .= '<main><h1>' . $page->title->rendered . '</h1>';
-			$markup .= $page->content->rendered . '</main>';
-
-			if( $page->slug === 'javascript-calculator' ) {
-				$markup .= '<script src="assets/js/calc.js"></script>';
-			}
-
-			if( $page->slug === 'tic-tac-toe' ) {
-				$markup .= '<script src="assets/js/tictac.js"></script>';
-			}
-
-			if( $page->slug === 'simon' ) {
-				$markup .= '<script src="assets/js/simon.js"></script>';
-			}
-
-			if( $page->slug === 'pomodoro' ) {
-				$markup .= '<script src="assets/js/pomodoro.js"></script>';
-			}
-			 
-			$markup .= $footerString;	
-			
-			echo $page->content->rendered;
-			file_put_contents( ABSPATH . 'web/' . $page->slug . '.html', $markup );
-		}
-	}
-	
-	$pages['timestamp'] = time();
+	$markup = $headString . $level . $headerString . $markup . $footerString;
+	 
+	file_put_contents( ABSPATH . 'index.html', $markup );
 ?>
