@@ -581,18 +581,14 @@ body {
 
 a {
 	color: black;
-	text-decoration: none;
-	transition: all .5s ease;
 }
 
 a:hover {
-	text-decoration: none;
 	color: black;
 }
 
 h1 {
 	color: #9d9d9d;
-	margin-top: 100px;
 	text-align: center;	
 }
 

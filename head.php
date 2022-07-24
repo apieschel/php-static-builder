@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="assets/lightbox/dist/css/lightbox.min.css">
 		<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css?ver=6.0.1" type='text/css' media='all' />
 		<link rel="stylesheet" href="assets/css/style.css">
+		<script src="assets/js/jquery-3.2.1.min.js"></script> 
 	</head>
 
 <?php 

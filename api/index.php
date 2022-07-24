@@ -27,10 +27,16 @@
 	$pages = ( array ) json_decode( $result );
 	
 	foreach( $pages as $page ) {
-		if( $page->slug !== 'gitfeed' ) {
+		if( $page->slug !== 'gitfeed' && $page->slug !== 'twitch-api' ) {
 			$markup = $headString . '<body class="page-template-default">' . $headerString;
 			$markup .= '<main><h1>' . $page->title->rendered . '</h1>';
-			$markup .= $page->content->rendered . '</main>' . $footerString;	
+			$markup .= $page->content->rendered . '</main>';
+
+			if( $page->slug === 'javascript-calculator' ) {
+				$markup .= '<script src="assets/js/calc.js"></script>';
+			}
+			 
+			$markup .= $footerString;	
 			
 			file_put_contents( ABSPATH . 'web/' . $page->slug . '.html', $markup );
 		}
