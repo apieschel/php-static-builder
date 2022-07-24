@@ -556,13 +556,16 @@ footer {
 	max-width: 100%;
 }
 
-.page-template-default main {
+.page-template-default main,
+.page-template-page-pomodoro main,
+.page-template-page-simon main {
 	max-width: 1200px;
 	margin: 0 auto; 
 	padding: 1em;
 }
 
-.page-template-default p {
+.page-template-default p,
+.page-template-page-simon p {
 	font-size: 1.5rem;
 	line-height: 1.5;
 }
@@ -896,23 +899,8 @@ ul {
 
 
 /* ============================== SIMON STYLING ============================= */
-
-.page-template-page-simon {
-	background-color: black;
-}
-
 .canvas-wrapper {
 	padding-bottom: 5%;
-}
-
-.page-template-page-simon .container p {
-	color: white;
-}
-
-.page-template-page-simon .container h1 {
-	color: white;
-	text-align: center;
-	margin-top: 0;
 }
 
 .page-template-page-simon canvas {
@@ -1062,23 +1050,18 @@ ul {
 }
 
 @media screen and (min-height: 900px) {
-
 	.page-template-page-simon canvas {
-		top:100px;
+		top:200px;
 	}
 
 	.ui {
-		top:100px;
+		top:200px;
 	}
 
-	.border-vertical {
-		top:100px;
-	}
-
+	.border-vertical,
 	.border-horizontal {
-		top:100px;
+		top:200px;
 	}
-
 }
 
 

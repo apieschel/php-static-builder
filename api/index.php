@@ -28,16 +28,42 @@
 	
 	foreach( $pages as $page ) {
 		if( $page->slug !== 'gitfeed' && $page->slug !== 'twitch-api' ) {
-			$markup = $headString . '<body class="page-template-default">' . $headerString;
+			$markup = $headString;
+
+			if( $page->slug === 'pomodoro' ) {
+				$markup .= '<body class="page-template-page-pomodoro">';
+			} else if( $page->slug === 'simon' ) {
+				$markup .= '<body class="page-template-page-simon">';
+			} else if( $page->slug === 'tic-tac-toe' ) {
+				$markup .= '<body class="page-template-page-tic-tac-toe">';
+			}
+			else {
+				$markup .= '<body class="page-template-default">';
+			}
+
+			$markup .= $headerString;
 			$markup .= '<main><h1>' . $page->title->rendered . '</h1>';
 			$markup .= $page->content->rendered . '</main>';
 
 			if( $page->slug === 'javascript-calculator' ) {
 				$markup .= '<script src="assets/js/calc.js"></script>';
 			}
+
+			if( $page->slug === 'tic-tac-toe' ) {
+				$markup .= '<script src="assets/js/tictac.js"></script>';
+			}
+
+			if( $page->slug === 'simon' ) {
+				$markup .= '<script src="assets/js/simon.js"></script>';
+			}
+
+			if( $page->slug === 'pomodoro' ) {
+				$markup .= '<script src="assets/js/pomodoro.js"></script>';
+			}
 			 
 			$markup .= $footerString;	
 			
+			echo $page->content->rendered;
 			file_put_contents( ABSPATH . 'web/' . $page->slug . '.html', $markup );
 		}
 	}
