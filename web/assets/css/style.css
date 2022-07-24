@@ -77,7 +77,6 @@ audio:not([controls]) {
 
 html {
 	color: #222;
-	font-family: sans-serif;
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -85,7 +84,7 @@ html {
 
 button {
 	color: #222;
-	font-family: sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 100%;
 	vertical-align: middle;
 	line-height: normal;
@@ -259,11 +258,65 @@ dd {
 	margin: 0 0 0 40px;
 }
 
+header nav {
+	background: black;
+}
+
+header nav li a,
+header nav li button {
+	color: white;
+	position: relative;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+header nav ul li a:hover,
+header nav ul li a:active,
+header nav ul li a:focus,
+header nav li button:hover,
+header nav li button:active,
+header nav li button:focus {
+	color: lightgrey;
+}
+
 nav ul {
-	list-style: none;
-	list-style-image: none;
 	margin: 0;
 	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+	list-style: none;
+}
+
+nav li ul {
+	background: black;
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    min-width: 160px;
+    padding: 20px 30px 10px;
+}
+
+nav li ul a {
+	text-align: left;
+	justify-content: flex-start;
+	min-height: 40px;
+}
+
+nav li [aria-expanded="true"] ~ ul {
+    display: block;
+}
+
+nav li button {
+	background: transparent; 
+	border: none;
+	color: white;
+	font-weight: 100;
 }
 
 nav ol {
@@ -432,7 +485,6 @@ iframe {
 header,
 section,
 footer {
-	float: left;
 	width: 100%;
 }
 
@@ -512,7 +564,7 @@ footer {
 
 .page-template-default p {
 	font-size: 1.5rem;
-	line-height: 1.4;
+	line-height: 1.5;
 }
 
 /***************************************************************************************************************************************************************************************/
@@ -590,7 +642,7 @@ ul {
 /* HOME */
 
 .home h1 {
-	font-size:48px;
+	font-size: 3.5rem;
 	font-weight: 100;
 	margin-bottom:48px;
 	margin-left: 40px;
