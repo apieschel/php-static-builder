@@ -66,13 +66,6 @@
 </main><script src="assets/js/simon.js"></script>		<script src="assets/lightbox/dist/js/lightbox.min.js" defer></script>
 
 		<script>
-			$( window ).scroll( function() {
-				if ($(this).scrollTop() > 700) {
-					document.querySelector( '.frankie' ).classList.add( 'animated' );
-					document.querySelector( '.frankie' ).classList.add( 'fadeInRight' );
-				}
-			} );
-
 			let parentMenuItems = Array.from( document.querySelectorAll( "nav ul li ul" ) );
 
 			parentMenuItems.forEach((element) => {

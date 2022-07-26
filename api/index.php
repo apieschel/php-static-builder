@@ -103,7 +103,7 @@
 	require_once( 'footer.php' );
 	global $footerString;
 	
-	$markup = $headString . $level . $headerString . $markup . $footerString;
+	$markup = $headString . $level . $headerString . $markup . '<script src="assets/js/scrolldetect.js"></script>' . $footerString;
 	 
 	file_put_contents( ABSPATH . 'index.html', $markup );
 ?>
