@@ -8,13 +8,13 @@ const screen = document.getElementById( 'screen' ).getContext( '2d' );
 const green = '#00BA8C';
 const orange = '#F15A2B';
 
-const kick = new Audio('https://cdn.glitch.com/17f54245-b142-4cf8-a81b-65e0b36f6b8f%2FMT52_bassdrum.wav?1551990664247');
-const snare = new Audio('https://cdn.glitch.com/17f54245-b142-4cf8-a81b-65e0b36f6b8f%2FMT52_snare.wav?1551990663373');
-const snareSide = new Audio('https://cdn.glitch.com/17f54245-b142-4cf8-a81b-65e0b36f6b8f%2FMT52_snare_sidestick.wav?1551990663860');
-const conga = new Audio('https://cdn.glitch.com/17f54245-b142-4cf8-a81b-65e0b36f6b8f%2FMT52_conga.wav?1551990662263');
-const congaHigh = new Audio('https://cdn.glitch.com/cc093c8e-9559-4f24-a71e-df60d5b1502c%2FMT52_conga_high.wav?1550690555911');
-const highHat = new Audio('https://cdn.glitch.com/17f54245-b142-4cf8-a81b-65e0b36f6b8f%2FMT52_hihat.wav?1551990662668');
-const openHat = new Audio('https://cdn.glitch.com/17f54245-b142-4cf8-a81b-65e0b36f6b8f%2FMT52_openhat.wav?1551990662961');
+const kick = new Audio( '/music/default/MT52_bassdrum.wav' );
+const snare = new Audio( '/music/default/MT52_snare.wav' );
+const snareSide = new Audio( '/music/default/MT52_snare_sidestick.wav' );
+const conga = new Audio( '/music/default/MT52_conga.wav' );
+const congaHigh = new Audio( '/music/default/MT52_conga_high.wav' );
+const highHat = new Audio( '/music/default/MT52_hihat.wav' );
+const openHat = new Audio( '/music/default/MT52_openhat.wav' );
 
 const data = {
 	step: 0,
@@ -277,7 +277,7 @@ function update() {
 		request.send();
 
 		interval = setInterval( () => {
-			if( data.tracks[0] ) {
+			// if( data.tracks.length ) {
 				data.step = ( data.step + 1 ) % data.tracks[0].steps.length;
 
 				data.tracks
@@ -307,7 +307,7 @@ function update() {
 
 						request.send();
 					} );
-			}
+			// }
 		}, 100 );
 	} );
 } )();

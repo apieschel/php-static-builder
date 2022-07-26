@@ -8,4 +8,5 @@ music/*
 !music/delete
 !music/directory
 !music/upload
+!music/default
 !music/index.php
