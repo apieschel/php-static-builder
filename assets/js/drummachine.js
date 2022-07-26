@@ -167,8 +167,10 @@ function update() {
 	if( midi === false ) {
 		location.reload();
 	} else {
-		navigator.requestMIDIAccess()
-			.then( onMIDISuccess, onMIDIFailure );
+		if( navigator.requestMIDIAccess ) {
+			navigator.requestMIDIAccess()
+				.then( onMIDISuccess, onMIDIFailure );
+		}
 	}
 }
  
