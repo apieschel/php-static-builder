@@ -167,10 +167,8 @@ function update() {
 	if( midi === false ) {
 		location.reload();
 	} else {
-		if( navigator.requestMIDIAccess ) {
-			navigator.requestMIDIAccess()
-				.then( onMIDISuccess, onMIDIFailure );
-		}
+		navigator.requestMIDIAccess()
+			.then( onMIDISuccess, onMIDIFailure );
 	}
 }
  
@@ -234,12 +232,16 @@ function update() {
 	} );
 
 	document.getElementById( 'midi' ).addEventListener( 'click', () => {
-		midi = ! midi;
-		clearInterval( interval );
-		data.step = 0;
-		update();
-		if( midi ) {
-			document.getElementById( 'midi' ).innerHTML = 'MIDI ON';
+		if( navigator.requestMIDIAccess ) {
+			midi = ! midi;
+			clearInterval( interval );
+			data.step = 0;
+			update();
+			if( midi ) {
+				document.getElementById( 'midi' ).innerHTML = 'MIDI ON';
+			}
+		} else {
+			alert( 'Apologies, but it appears the midi api is not currently enabled for your browser.' );
 		}
 	} );
 
