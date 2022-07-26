@@ -2,11 +2,12 @@
 		<script src="assets/lightbox/dist/js/lightbox.min.js" defer></script>
 
 		<script>
-			$(window).scroll(function() {
+			$( window ).scroll( function() {
 				if ($(this).scrollTop() > 700) {
-					$(".frankie").addClass("animated fadeInRight");
+					document.querySelector( '.frankie' ).classList.add( 'animated' );
+					document.querySelector( '.frankie' ).classList.add( 'fadeInRight' );
 				}
-			});
+			} );
 
 			let parentMenuItems = Array.from( document.querySelectorAll( "nav ul li ul" ) );
 

@@ -6,6 +6,7 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="icon" type="image/png" href="assets/favicon.png"/>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300">
 		<link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/lightbox/dist/css/lightbox.min.css">
@@ -22,6 +23,7 @@
 			<li>
 				<button aria-expanded="false">Projects</button>
 				<ul>
+					<li><a href="/javascript-drum-machine">Javascript Drum Machine</a></li>
 					<li><a href="/javascript-calculator">Samsung Galaxy S6 Calculator</a></li>
 					<li><a href="/tic-tac-toe">Tic Tac Toe</a></li>
 					<li><a href="/simon">Simon</a></li>
@@ -62,11 +64,12 @@
 </main><script src="assets/js/tictac.js"></script>		<script src="assets/lightbox/dist/js/lightbox.min.js" defer></script>
 
 		<script>
-			$(window).scroll(function() {
+			$( window ).scroll( function() {
 				if ($(this).scrollTop() > 700) {
-					$(".frankie").addClass("animated fadeInRight");
+					document.querySelector( '.frankie' ).classList.add( 'animated' );
+					document.querySelector( '.frankie' ).classList.add( 'fadeInRight' );
 				}
-			});
+			} );
 
 			let parentMenuItems = Array.from( document.querySelectorAll( "nav ul li ul" ) );
 

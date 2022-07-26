@@ -4,3 +4,8 @@ inc/
 .DS_Store
 robots.txt
 sitemap.xml
+music/*
+!music/delete
+!music/directory
+!music/upload
+!music/index.php

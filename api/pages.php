@@ -37,6 +37,8 @@
 				$markup .= '<body class="page-template-page-simon">';
 			} else if( $page->slug === 'tic-tac-toe' ) {
 				$markup .= '<body class="page-template-page-tic-tac-toe">';
+			} else if( $page->slug === 'javascript-drum-machine' ) {
+				$markup .= '<body class="javascript-drum-machine">';
 			}
 			else {
 				$markup .= '<body class="page-template-default">';
@@ -60,6 +62,14 @@
 
 			if( $page->slug === 'pomodoro' ) {
 				$markup .= '<script src="assets/js/pomodoro.js"></script>';
+			}
+
+			if( $page->slug === 'javascript-drum-machine' ) {
+				$markup .= '
+					<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+					<script src="assets/js/client.js"></script>
+					<script src="assets/js/drummachine.js"></script>
+				';
 			}
 			 
 			$markup .= $footerString;	
