@@ -1,4 +1,6 @@
 <?php
+	require_once( '../inc/config.php' );
+
     // http://www.ajaxonomy.com/2012/php/making-a-server-side-image-cache-in-php
     function checkCache( $id, $file ) {
         if( $id == '0' && $file == '' ) {
@@ -17,12 +19,6 @@
         // Append the host(domain name, ip) to the URL.   
         $SITE_URL .= $_SERVER['HTTP_HOST'];     
 
-
-        $prefix = '/745@D4k8n@lsOfWlsbn_ua-home/gb';
-        if ( strpos( $_SERVER['REQUEST_URI'], $prefix ) !== false ) {
-            $SITE_URL .= $prefix;  
-        }
-
         $cachefile = dirname( dirname( __FILE__ ) ) . '/imagecache/' . $file;
         $cacheURL = $SITE_URL . '/imagecache/' . $file;
   
@@ -33,7 +29,7 @@
                             
             curl_setopt_array( $curl, [
                 CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => 'https://gb.ua.edu/wp-json/wp/v2/media/' . $id
+                CURLOPT_URL => API_URL . '/' . $id
             ] );
 
             $mediaResult = curl_exec( $curl );
