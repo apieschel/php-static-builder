@@ -39,26 +39,23 @@ let interval = setInterval( () => {
 			let clone = track.playSound.cloneNode( true );
 			let buffer;
 
-			const request = new XMLHttpRequest();
-			request.open( 'GET', track.playSound.src, true );
-			request.responseType = 'arraybuffer';
-			request.onload = () => {
-				ac.decodeAudioData( request.response, ( buffer ) => {
-					buffer = buffer;
-
-					const gain = ac.createGain();
-					const playSound = ac.createBufferSource();
-					playSound.buffer = buffer;
-					playSound.connect( gain );
-					gain.connect( recorderNode );
-					gain.connect( ac.destination );
-					playSound.start( 0 );
-
-					clone.remove();
+			fetch( track.playSound.src )
+				.then( ( response ) => response.arrayBuffer() )
+				.then( ( data ) => {
+					ac.decodeAudioData( data, ( buffer ) => {
+						buffer = buffer;
+	
+						const gain = ac.createGain();
+						const playSound = ac.createBufferSource();
+						playSound.buffer = buffer;
+						playSound.connect( gain );
+						gain.connect( recorderNode );
+						gain.connect( ac.destination );
+						playSound.start( 0 );
+	
+						clone.remove();
+					} );
 				} );
-			}
-
-			request.send();
 		} );
 }, 100 );
 
@@ -130,26 +127,23 @@ function getMIDIMessage( message ) {
 						let clone = track.playSound.cloneNode(true);
 						let buffer;
 
-						const request = new XMLHttpRequest();
-						request.open( 'GET', track.playSound.src, true );
-						request.responseType = 'arraybuffer';
-						request.onload = () => {
-							ac.decodeAudioData( request.response, ( buffer ) => {
-								buffer = buffer;
-
-								const gain = ac.createGain();
-								const playSound = ac.createBufferSource();
-								playSound.buffer = buffer;
-								playSound.connect( gain );
-								gain.connect( recorderNode );
-								gain.connect( ac.destination );
-								playSound.start( 0 );
-
-								clone.remove();
+						fetch( track.playSound.src )
+							.then( ( response ) => response.arrayBuffer() )
+							.then( ( data ) => {
+								ac.decodeAudioData( data, ( buffer ) => {
+									buffer = buffer;
+				
+									const gain = ac.createGain();
+									const playSound = ac.createBufferSource();
+									playSound.buffer = buffer;
+									playSound.connect( gain );
+									gain.connect( recorderNode );
+									gain.connect( ac.destination );
+									playSound.start( 0 );
+				
+									clone.remove();
+								} );
 							} );
-						}
-
-						request.send();
 					} );
 			}
 			break;
@@ -259,25 +253,24 @@ function update() {
 		clearInterval( interval );
 		data.tracks = [];
 
-		const request = new XMLHttpRequest();
-		request.open( 'GET', '/music/directory?directory=' + values.directory );
-		request.onload = () => {
-			let res = JSON.parse( request.response );
-			let tracks = [];
-			if( res.files ) {
-				for( let i = 0; i < res.files.length; i++ ) {
-					let audioSrc = res.directory + res.files[i];
-					tracks.push( createTrack( green, new Audio( audioSrc ) ) );
+		fetch( '/music/directory?directory=' + values.directory )
+			.then( ( response ) => response.json() )
+			.then( ( reqres ) => {
+				let res = reqres;
+				let tracks = [];
+				if( res.files ) {
+					for( let i = 0; i < res.files.length; i++ ) {
+						let audioSrc = res.directory + res.files[i];
+						tracks.push( createTrack( green, new Audio( audioSrc ) ) );
+					}
 				}
-			}
 
-			data.tracks = tracks;
-			document.getElementById( 'screen' ).height = data.tracks.length * 48;
-		}
-		request.send();
+				data.tracks = tracks;
+				document.getElementById( 'screen' ).height = data.tracks.length * 48;
+			} );
 
 		interval = setInterval( () => {
-			// if( data.tracks.length ) {
+			if( data.tracks.length ) {
 				data.step = ( data.step + 1 ) % data.tracks[0].steps.length;
 
 				data.tracks
@@ -286,28 +279,25 @@ function update() {
 						let clone = track.playSound.cloneNode( true );
 						let buffer;
 
-						const request = new XMLHttpRequest();
-						request.open( 'GET', track.playSound.src, true );
-						request.responseType = 'arraybuffer';
-						request.onload = () => {
-							ac.decodeAudioData( request.response, ( buffer ) => {
-								buffer = buffer;
-
-								const gain = ac.createGain();
-								const playSound = ac.createBufferSource();
-								playSound.buffer = buffer;
-								playSound.connect( gain );
-								gain.connect( recorderNode );
-								gain.connect( ac.destination );
-								playSound.start( 0 );
-
-								clone.remove();
+						fetch( track.playSound.src )
+							.then( ( response ) => response.arrayBuffer() )
+							.then( ( data ) => {
+								ac.decodeAudioData( data, ( buffer ) => {
+									buffer = buffer;
+				
+									const gain = ac.createGain();
+									const playSound = ac.createBufferSource();
+									playSound.buffer = buffer;
+									playSound.connect( gain );
+									gain.connect( recorderNode );
+									gain.connect( ac.destination );
+									playSound.start( 0 );
+				
+									clone.remove();
+								} );
 							} );
-						}
-
-						request.send();
 					} );
-			// }
+			}
 		}, 100 );
 	} );
 } )();
