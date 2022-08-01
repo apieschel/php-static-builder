@@ -22,5 +22,5 @@
 <?php 
    global $headerString;
    $headerString = ob_get_contents(); 
-   ob_flush();
+   ob_end_clean();
 ?>

@@ -31,5 +31,5 @@
 <?php 
    global $footerString;
    $footerString = ob_get_contents(); 
-   ob_flush();
+   ob_end_clean();
 ?>

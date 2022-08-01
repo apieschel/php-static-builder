@@ -19,5 +19,5 @@
 <?php 
    global $headString;
    $headString = ob_get_contents(); 
-   ob_flush();
+   ob_end_clean();
 ?>
