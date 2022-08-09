@@ -46,7 +46,7 @@
 
 			$markup .= $headerString;
 			$markup .= '<main><h1>' . $_POST['title'] . '</h1>';
-			$markup .= $newPageData['content']->rendered . '</main>';
+			$markup .= $newPageData['post_content'] . '</main>';
 
 			switch( $_POST['slug'] ) {
 				case 'pomodoro':
