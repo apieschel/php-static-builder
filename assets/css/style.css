@@ -856,6 +856,17 @@ ul {
 	}
 }
 
+@media screen and (max-width: 900px) {
+	.project-container {
+		display: block;
+		padding: 1em;
+	}
+
+	.project-tile {
+		min-width: auto;
+	}
+}
+
 @media screen and (max-width: 600px) {
 	.circle {
 		display: none;
@@ -1788,7 +1799,38 @@ input:focus {
 }
 
 @media screen and (max-width: 700px) {
+	.javascript-drum-machine .flex-container {
+		overflow: hidden; 
+	}
+
+	.javascript-drum-machine .view {
+		margin-right: 0;
+	}
+
 	.javascript-drum-machine .outer {
 		flex-direction: column;
+	}
+
+	.javascript-drum-machine form .flex-container,
+	.recordContainer .flex-container {
+		display: block;
+		padding: 0.5em;
+	}
+
+	.recordContainer button {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	.javascript-drum-machine input, 
+	.javascript-drum-machine select {
+		margin: 0.5em 0;
+		width: 100%;
+	}
+
+	.javascript-drum-machine .instructions {
+		padding: 0.5em;
+		margin: 0;
+		width: auto;
 	}
 }
