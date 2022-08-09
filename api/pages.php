@@ -17,9 +17,10 @@
 		] );
 
 		$result = curl_exec( $curl );
+		$resultStatus = curl_getinfo( $curl, CURLINFO_HTTP_CODE );
 		curl_close( $curl );
 
-		if( isset( $_POST['post'] ) && curl_getinfo( $curl, CURLINFO_HTTP_CODE ) === 200 ) {
+		if( isset( $_POST['post'] ) && $resultStatus === 200 ) {
 			$oldPageData = json_decode( file_get_contents( ABSPATH . 'api/' . $_POST['slug'] . '.json' ) );
 			$expired = $pageData->timestamp <= strtotime( '-1 minute', time() );
 
