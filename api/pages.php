@@ -22,7 +22,7 @@
 
 		if( isset( $_POST['post'] ) && $resultStatus === 200 ) {
 			$oldPageData = json_decode( file_get_contents( ABSPATH . 'api/' . $_POST['slug'] . '.json' ) );
-			$expired = $pageData->timestamp <= strtotime( '-1 minute', time() );
+			$expired = $oldPageData->timestamp <= strtotime( '-1 minute', time() );
 
 			if( $expired ) {
 				$newPageData = ( array ) json_decode( $_POST['post'] );
