@@ -9,18 +9,7 @@
 		global $headerString;
 		global $footerString;
 		
-		$curl = curl_init();
-					
-		curl_setopt_array( $curl, [
-			CURLOPT_RETURNTRANSFER => 1,
-			CURLOPT_URL => API_URL_PAGES,
-		] );
-
-		$result = curl_exec( $curl );
-		$resultStatus = curl_getinfo( $curl, CURLINFO_HTTP_CODE );
-		curl_close( $curl );
-
-		if( isset( $_POST['post'] ) && $resultStatus === 200 ) {
+		if( isset( $_POST['api_key'] ) && $_POST['api_key'] === API_KEY ) {
 			$newPageData = ( array ) json_decode( $_POST['post'] );
 			$newPageData['timestamp'] = time();
 			file_put_contents( ABSPATH . 'api/' . $_POST['slug'] . '.json', json_encode( $newPageData ) );
@@ -74,6 +63,8 @@
 			
 			$markup .= $footerString;
 			file_put_contents( ABSPATH . $_POST['slug'] . '.html', $markup );
+		} else {
+			echo "Sorry, but you are not authorized.";
 		}
 	} else {
 		echo "Sorry, but you don't have access to this page.";
