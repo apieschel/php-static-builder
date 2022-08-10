@@ -1,4 +1,6 @@
 *.json
+*.html
+assets/lightbox
 inc/
 .htaccess
 .DS_Store
