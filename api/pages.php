@@ -57,8 +57,6 @@
 						<script src="assets/js/drummachine.js"></script>
 					';
 					break;
-				default:
-					$markup .= '<body class="page-template-default">';		
 			}
 			
 			$markup .= $footerString;
