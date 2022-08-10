@@ -1,6 +1,7 @@
 *.json
 *.html
 assets/lightbox
+assets/css/font-awesome
 inc/
 .htaccess
 .DS_Store
