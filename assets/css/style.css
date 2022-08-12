@@ -19,6 +19,7 @@ Version: 1.0
 	font-style: normal;
 	font-weight: 300;
 	src: url('../fonts/montserrat/montserrat-latin.woff2') format('woff2');
+	font-display: swap;
 }
 
 @font-face {
@@ -26,6 +27,7 @@ Version: 1.0
    font-style: normal;
    font-weight: 300;
    src: url('../fonts/montserrat/montserrat-latin-ext.woff2') format('woff2');
+   font-display: swap;
 }
 
 article {
