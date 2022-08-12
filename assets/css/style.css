@@ -812,23 +812,23 @@ ul {
 
 .code5 {
 	margin: 5% 0 20% 0;
-	background: url("https://dev-gtr-software-api.pantheonsite.io/wp-content/uploads/2022/07/mainstreet_css_code_sample.png");
+	background: url("../img/mainstreet_code_1.webp");
 }
 
 .code6 {
 	margin: 5% 5% 20% 0;
-	background: url("https://dev-gtr-software-api.pantheonsite.io/wp-content/uploads/2022/07/mainstreet_php_code_sample.png");
+	background: url("../img/mainstreet_code_2.webp");
 }
 
 
 .code7 {
 	margin: 5% 0 20% 0;
-	background: url("https://dev-gtr-software-api.pantheonsite.io/wp-content/uploads/2022/07/Screen-Shot-2022-07-19-at-4.01.04-PM.png");
+	background: url("../img/dirtypaws_code_1.webp");
 }
 
 .code8 {
 	margin: 5% 5% 20% 0;
-	background: url("https://dev-gtr-software-api.pantheonsite.io/wp-content/uploads/2022/07/Screen-Shot-2022-07-19-at-4.04.14-PM.png");
+	background: url("../img/dirtypaws_code_2.webp");
 }
 
 .code:hover span {
