@@ -84,7 +84,7 @@
 
 				<div class="project-container">
 					<a href="' . $project->custom_fields->{'Project URL'}[0] . '" target="_blank">
-						<img width="890" height="938" src="' . $project->_embedded->{'wp:featuredmedia'}[0]->media_details->sizes->full->source_url . '">
+						<img width="890" height="938" src="/assets/img/' . $project->_embedded->{'wp:featuredmedia'}[0]->media_details->sizes->full->file . '">
 					</a>
 					
 					<div class="project-tile">
