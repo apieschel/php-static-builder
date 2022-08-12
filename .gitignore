@@ -2,6 +2,7 @@
 *.html
 assets/lightbox
 assets/css/font-awesome
+assets/img
 jquery-3.2.1.min.js
 favicon.png
 inc/
