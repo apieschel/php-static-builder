@@ -906,10 +906,6 @@ ul {
 		font-size: 0.7rem;
 	}
 
-	.home .project-tile p {
-		font-size: 0.7rem;
-	}
-
 	.code {
 		float: none;
 		margin: 0 auto;
@@ -919,6 +915,12 @@ ul {
 
 	.navbar-right li {
 		display: none;
+	}
+}
+
+@media screen and (max-width: 389px) {
+	.home .project-tile p {
+		font-size: 0.7rem;
 	}
 }
 
