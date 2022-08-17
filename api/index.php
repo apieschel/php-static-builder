@@ -84,7 +84,7 @@
 
 				<div class="project-container">
 					<a href="' . $project->custom_fields->{'Project URL'}[0] . '" target="_blank">
-						<img width="890" height="938" src="/assets/img/' . $project->_embedded->{'wp:featuredmedia'}[0]->slug . '-medium.webp">
+						<img width="890" height="938" src="/assets/img/' . $project->_embedded->{'wp:featuredmedia'}[0]->slug . '-medium.webp" alt="' . $project->_embedded->{'wp:featuredmedia'}[0]->alt_text . '">
 					</a>
 					
 					<div class="project-tile">
